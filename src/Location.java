@@ -1,5 +1,5 @@
 public class Location {
-    public Film getFilm() {        return film;    }
+    public Film getFilm() {return film;}
 
     public int getDuree() {
         return duree;

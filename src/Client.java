@@ -19,7 +19,8 @@ public class Client {
             if (filmArrayListLocation.get(i).isAvailable()) {
                 Location loc = new Location(filmArrayListLocation.get(i), dureeArrayListLocation.get(i), "01-01-2021");
                 locationsTemp.add(loc);
-            }else {
+                loc.getFilm().diminueStock();
+            } else {
                 locationIsOK = false;
                 System.out.println("Le film "+filmArrayListLocation.get(i).getNom()+" n'est pas disponible");
             }

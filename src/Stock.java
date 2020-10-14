@@ -3,6 +3,10 @@ import java.util.Scanner;
 
 public class Stock {
 
+    public ArrayList<Film> getListFilm() {
+        return listFilm;
+    }
+
     private ArrayList<Film> listFilm;
 
     public Stock() {

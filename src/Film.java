@@ -50,7 +50,7 @@ public class Film {
     }
 
     private void setDisponibilite() {
-        if (getNbExemplaire()>=0) isAvailable=true;
+        if (getNbExemplaire()>0) isAvailable=true;
         else isAvailable=false;
     }
 
@@ -63,5 +63,4 @@ public class Film {
         this.nbExemplaire += 1;
         setDisponibilite();
     }
-
 }
