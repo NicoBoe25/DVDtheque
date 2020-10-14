@@ -2,9 +2,11 @@ import java.util.ArrayList;
 
 public class Agence {
 
-    private Stock stock;
+    public Stock getStock() {
+        return stock;
+    }
 
-    public Agence() {}
+    private Stock stock;
 
     public Agence(Stock stock) {
         this.stock = stock;
