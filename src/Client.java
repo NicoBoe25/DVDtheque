@@ -31,8 +31,9 @@ public class Client {
     }
 
     public void facture(ArrayList<Location> locations){
+        double somme = 0;
         for (Location f: locations) {
-
+            somme += f.getFilm().getCat().getTarif();
         }
     }
 

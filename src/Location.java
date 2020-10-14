@@ -1,4 +1,14 @@
 public class Location {
+    public Film getFilm() {        return film;    }
+
+    public int getDuree() {
+        return duree;
+    }
+
+    public String getDateRetourPrevue() {
+        return dateRetourPrevue;
+    }
+
     private Film film;
     private int duree;
     private String dateRetourPrevue;
