@@ -51,3 +51,4 @@ public class DVDthequeTest {
         client3 = new Client();
     }
 }
+// TODO: 22/10/2020 Article coco, on est dsl, mais c'est toi qui a assumer 
