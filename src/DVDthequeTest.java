@@ -25,6 +25,8 @@ public class DVDthequeTest {
         client2.commande(filmsCommande,dureeFilmCommande);
         System.out.println("------------------------Client 3--------------------------------");
         client3.commande(filmsCommande,dureeFilmCommande);
+
+        System.out.println(Support.DVD.getTarifSupport());
     }
 
     public void init() {
