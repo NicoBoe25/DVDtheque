@@ -1,5 +1,7 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Film {
@@ -32,37 +34,36 @@ public class Film {
     private int nbExemplaire;
     private String nom;
     private Date date;
+    private Categorie categorie;
     private boolean isAvailable;
 
     public Film(int nbExemplaire, String nom, String date ) {
         this.nbExemplaire = nbExemplaire;
         this.nom = nom;
+        this.date=new Date(date);
         setDisponibilite();
-
-        setNewDate(date);
+        setCategorie();
     }
 
-    private void setNewDate(String date) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-        try {
-            Date date1 = simpleDateFormat.parse(date) ;
-            this.date = date1 ;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        //setCategorie();
-
-    }
-
-    /*
     private void setCategorie() {
-        if (date.compareTo(new Date())){
-
+        LocalDate date = LocalDate.now(); // Gets the current date
+        Date dateNow = new Date(String.valueOf(date));
+        if (getDate().compareTo(dateNow)==0){
+            this.categorie= Categorie.NOUVEAUTE;
+        }else if (getDate().getYear()==dateNow.getYear()){
+            if (getDate().getMonth()==dateNow.getMonth()){
+                this.categorie=Categorie.RECENT;
+            }else {
+                this.categorie=Categorie.ANNEE;
+            }
+        }else if (getDate().getYear()==dateNow.getYear()-1){
+            this.categorie=Categorie.AN_PASSE;
+        }else {
+            this.categorie=Categorie.ANCIEN;
         }
     }
-    */
+
 
 
 
