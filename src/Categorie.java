@@ -1,27 +1,16 @@
-public class Categorie {
+public enum Categorie {
 
-    private double tarif;
-    private String nom;
+    NOUVEAUTE(2.5), RECENT(1.75), ANNEE(1), AN_PASSE(0.75), ANCIEN(0.5) ;
 
-    public double getTarif() {
-        return tarif;
+    private double tarifCat ;
+    Categorie(double v) {
+        this.tarifCat = v ;
+
     }
 
-    public void setTarif(double tarif) {
-        this.tarif = tarif;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
+    public double getTarifCat() {
+        return tarifCat;
     }
 
 
-    public Categorie(String nom, double tarif) {
-        this.nom = nom;
-        this.tarif = tarif;
-    }
 }

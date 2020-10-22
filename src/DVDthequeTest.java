@@ -31,11 +31,13 @@ public class DVDthequeTest {
 
     public void init() {
         ArrayList<Film> filmArrayList = new ArrayList<>();
-        filmArrayList.add(new Film(3,"Iron Man","30-04-2008","Ancien",6.99));
-        filmArrayList.add(new Film(1,"Spider-Man New Generation","30-04-2019","An passé",9.99));
-        filmArrayList.add(new Film(5,"Fast and Furious","30-05-2001","Ancien",3.99));
-        filmArrayList.add(new Film(33,"In the dark","30-04-2012","Ancien",4.99));
-        filmArrayList.add(new Film(2,"Qu'est ce qu'on a fait au bon dieu?","30-04-2013","Ancien",1.99));
+        filmArrayList.add(new Film(3,"Iron Man","30-04-2008"));
+        filmArrayList.add(new Film(1,"Spider-Man New Generation","30-04-2019"));
+        filmArrayList.add(new Film(5,"Fast and Furious","30-05-2001"));
+        filmArrayList.add(new Film(33,"In the dark","30-04-2012"));
+        filmArrayList.add(new Film(2,"Qu'est ce qu'on a fait au bon dieu?","30-04-2013"));
+
+
         agence1 = new Agence(filmArrayList);
         client1 = new Client();
         client2 = new Client();

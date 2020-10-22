@@ -1,3 +1,7 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Film {
 
     //-------------------------Getters-----------------------------//
@@ -9,12 +13,8 @@ public class Film {
         return nom;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
-    }
-
-    public Categorie getCat() {
-        return cat;
     }
 
     public boolean isAvailable() {
@@ -26,28 +26,40 @@ public class Film {
         this.nom = nom;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
 
-    public void setCat(Categorie cat) {
-        this.cat = cat;
-    }
 
     //-------------------------Fields-----------------------------//
     private int nbExemplaire;
     private String nom;
-    private String date;
+    private Date date;
     private boolean isAvailable;
-    private Categorie cat;
 
-    public Film(int nbExemplaire, String nom, String date, String nomCategorie, double tarif) {
+    public Film(int nbExemplaire, String nom, String date ) {
         this.nbExemplaire = nbExemplaire;
         this.nom = nom;
-        this.date = date;
-        this.cat = new Categorie(nomCategorie, tarif);
         setDisponibilite();
+
+        setNewDate(date);
     }
+
+    private void setNewDate(String date) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            Date date1 = simpleDateFormat.parse(date) ;
+            this.date = date1 ;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        setCategorie();
+
+    }
+
+    private void setCategorie() {
+
+    }
+
 
     private void setDisponibilite() {
         if (getNbExemplaire()>0) isAvailable=true;
