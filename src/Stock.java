@@ -28,11 +28,8 @@ public class Stock {
             String dateFilm = scanner.nextLine();
             System.out.println("Nombre d'Exemplaire :");
             int nbExemplaire = scanner.nextInt();
-            System.out.println("Nom catégorie :");
-            String nomCat = scanner.nextLine();
-            System.out.println("Tarif :");
-            double tarif = scanner.nextDouble();
-            listFilm.add(new Film(nbExemplaire,nomFilm,dateFilm,nomCat,tarif));
+
+            listFilm.add(new Film(nbExemplaire,nomFilm,dateFilm));
         }
     }
 }

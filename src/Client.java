@@ -34,7 +34,8 @@ public class Client {
     public void facture(ArrayList<Location> locations){
         double somme = 0;
         for (Location f: locations) {
-            somme += f.getFilm().getCat().getTarif();
+            somme += 1;
+            // TODO: 22/10/2020 a modifier ptdr 
         }
     }
 

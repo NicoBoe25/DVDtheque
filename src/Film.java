@@ -52,13 +52,18 @@ public class Film {
             e.printStackTrace();
         }
 
-        setCategorie();
+        //setCategorie();
 
     }
 
+    /*
     private void setCategorie() {
+        if (date.compareTo(new Date())){
 
+        }
     }
+    */
+
 
 
     private void setDisponibilite() {

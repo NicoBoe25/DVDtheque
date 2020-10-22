@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class DVDthequeTest {
@@ -27,6 +29,11 @@ public class DVDthequeTest {
         client3.commande(filmsCommande,dureeFilmCommande);
 
         System.out.println(Support.DVD.getTarifSupport());
+
+        System.out.println(System.currentTimeMillis());
+        LocalDate ffff = LocalDate.now() ;
+        System.out.println(ffff);
+
     }
 
     public void init() {
