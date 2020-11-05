@@ -12,18 +12,18 @@ public class Client {
     public Client() {
         this.locationArrayList = new ArrayList<>();
     }
-
-    public void commande(ArrayList<Film> filmArrayListLocation, ArrayList<Integer> dureeArrayListLocation){
+// TODO: 05/11/2020 Y'a un soucis bg
+    public void commande(ArrayList<Article> articleArrayList, ArrayList<Integer> dureeArrayListLocation){
         boolean locationIsOK = true;
         ArrayList<Location> locationsTemp = new ArrayList<Location>();
-        for (int i = 0; i < filmArrayListLocation.size(); i++) {
-            if (filmArrayListLocation.get(i).isAvailable()) {
-                Location loc = new Location(filmArrayListLocation.get(i), dureeArrayListLocation.get(i), "01-01-2021");
+        for (int i = 0; i < articleArrayList.size(); i++) {
+            if (articleArrayList.get(i).isAvailable()) {
+                Location loc = new Location(articleArrayList.get(i), dureeArrayListLocation.get(i), "01-01-2021");
                 locationsTemp.add(loc);
                 loc.getFilm().diminueStock();
             } else {
                 locationIsOK = false;
-                System.out.println("Le film "+filmArrayListLocation.get(i).getNom()+" n'est pas disponible");
+                System.out.println("Le film "+articleArrayList.get(i).getNom()+" n'est pas disponible");
             }
         }
         if (locationIsOK){
@@ -36,7 +36,7 @@ public class Client {
         double somme = 0;
         for (Location f: locations) {
             somme += 1;
-            // TODO: 22/10/2020 a modifier ptdr 
+            // TODO: 22/10/2020 a modifier ptdr
         }
     }
 

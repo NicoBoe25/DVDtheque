@@ -7,4 +7,9 @@ public class Article {
         this.film = film;
         this.support = support;
     }
+
+    public boolean isAvailable() {
+        return this.film.isAvailable();
+    }
+
 }
