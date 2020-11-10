@@ -12,7 +12,7 @@ public class Agence {
         this.stock = stock;
     }
 
-    public Agence(ArrayList<Film> listFilm){
-        this.stock = new Stock(listFilm);
+    public Agence(ArrayList<Article> listArticles){
+        this.stock = new Stock(listArticles);
     }
 }
