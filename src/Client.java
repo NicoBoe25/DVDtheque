@@ -29,16 +29,11 @@ public class Client {
         if (locationIsOK){
             System.out.println("Tous les films ont été loué");
         }
-        facture(locationsTemp);
+        locationArrayList.clear();
+        locationArrayList = locationsTemp;
     }
 
-    public void facture(ArrayList<Location> locations){
-        double somme = 0;
-        for (Location l: locations) {
-            somme += l.getArticle().getPrixCategorie();
-            // TODO: 22/10/2020 a modifier ptdr
-        }
-    }
+
 
     public void penalise(){}
     public void renduLocation(){}

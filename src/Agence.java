@@ -15,4 +15,12 @@ public class Agence {
     public Agence(ArrayList<Article> listArticles){
         this.stock = new Stock(listArticles);
     }
+
+
+    public void facture(ArrayList<Location> locations){
+        double somme = 0;
+        for (Location l: locations) {
+            somme += l.getPrixLocation();
+        }
+    }
 }

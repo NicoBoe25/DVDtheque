@@ -1,12 +1,16 @@
 public class Article {
 
     private Film film;
+
     private Support support;
     private int nbExemplaire;
     private boolean isAvailable;
 
     public Film getFilm() {
         return film;
+    }
+    public Support getSupport() {
+        return support;
     }
     public int getNbExemplaire() {
         return nbExemplaire;
@@ -39,6 +43,9 @@ public class Article {
     }
     public double getPrixCategorie(){
         return getFilm().getCategorie().getTarifCat();
+    }
+    public double getPrixSupport(){
+        return getSupport().getTarifSupport();
     }
 
 }
