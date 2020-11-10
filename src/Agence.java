@@ -23,4 +23,11 @@ public class Agence {
             somme += l.getPrixLocation();
         }
     }
+
+    public void rembourser(){
+    }
+
+    public void penaliser(Client client){
+
+    }
 }

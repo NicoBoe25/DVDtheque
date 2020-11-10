@@ -34,7 +34,9 @@ public class Client {
     }
 
 
-
+    public void payer(Facture facture){
+        //compte-=facture.getMontant();
+    }
     public void penalise(){}
     public void renduLocation(){}
 }
