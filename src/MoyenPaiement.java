@@ -1,3 +1,3 @@
 public enum MoyenPaiement {
-    CB, CHEQUE, ESPECE;
+    CB, CHEQUE, COMPTE, ESPECE;
 }

@@ -8,9 +8,11 @@ public class Client {
     }
 
     private ArrayList<Location> locationArrayList;
+    private Compte compte;
 
     public Client() {
         this.locationArrayList = new ArrayList<>();
+        compte=null;
     }
 
     public void commande(ArrayList<Article> articleArrayList, ArrayList<Integer> dureeArrayListLocation){
@@ -34,9 +36,18 @@ public class Client {
     }
 
 
-    public void payer(Facture facture){
-        //compte-=facture.getMontant();
+    public double payer(Facture facture){
+        if (facture.getMoyenPaiement().equals(MoyenPaiement.COMPTE)){
+            System.out.println("Vous devez réapprovisionner votre compte");
+            return compte.debiter(facture.getMontant());
+        }
+        System.out.println("Votre compte a été débité");
+        return facture.getMontant();
     }
     public void penalise(){}
     public void renduLocation(){}
+
+    public void creerCompte(){
+        compte=new Compte();
+    }
 }
