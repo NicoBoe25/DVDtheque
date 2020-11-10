@@ -30,7 +30,7 @@ public class Film {
 
     public Film(String nom, String date ) {
         this.nom = nom;
-        this.date=new Date(date);
+        this.date=new Date(String.valueOf(date));
         setCategorie();
     }
 
