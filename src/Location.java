@@ -29,6 +29,7 @@ public class Location {
         for (int i = 0; i < getDuree(); i++) {
             prix = prix-(prix*0.1*i);
         }
+        prixLocation=prix;
     }
 
 
