@@ -35,9 +35,4 @@ public class Article {
         this.nbExemplaire += 1;
         setDisponibilite();
     }
-
-    public boolean isAvailable() {
-        return this.film.isAvailable();
-    }
-
 }
