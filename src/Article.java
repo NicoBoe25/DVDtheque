@@ -5,7 +5,9 @@ public class Article {
     private int nbExemplaire;
     private boolean isAvailable;
 
-
+    public Film getFilm() {
+        return film;
+    }
     public int getNbExemplaire() {
         return nbExemplaire;
     }

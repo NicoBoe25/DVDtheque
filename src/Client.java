@@ -12,7 +12,7 @@ public class Client {
     public Client() {
         this.locationArrayList = new ArrayList<>();
     }
-// TODO: 05/11/2020 Y'a un soucis bg
+
     public void commande(ArrayList<Article> articleArrayList, ArrayList<Integer> dureeArrayListLocation){
         boolean locationIsOK = true;
         ArrayList<Location> locationsTemp = new ArrayList<Location>();
@@ -20,10 +20,10 @@ public class Client {
             if (articleArrayList.get(i).isAvailable()) {
                 Location loc = new Location(articleArrayList.get(i), dureeArrayListLocation.get(i), "01-01-2021");
                 locationsTemp.add(loc);
-                loc.getFilm().diminueStock();
+                loc.getArticle().diminueStock();
             } else {
                 locationIsOK = false;
-                System.out.println("Le film "+articleArrayList.get(i).getNom()+" n'est pas disponible");
+                System.out.println("Le film "+articleArrayList.get(i).getFilm().getNom()+" n'est pas disponible");
             }
         }
         if (locationIsOK){
