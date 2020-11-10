@@ -37,4 +37,8 @@ public class Article {
         this.nbExemplaire += 1;
         setDisponibilite();
     }
+    public double getPrixCategorie(){
+        return getFilm().getCategorie().getTarifCat();
+    }
+
 }

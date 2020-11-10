@@ -34,8 +34,8 @@ public class Client {
 
     public void facture(ArrayList<Location> locations){
         double somme = 0;
-        for (Location f: locations) {
-            somme += 1;
+        for (Location l: locations) {
+            somme += l.getArticle().getPrixCategorie();
             // TODO: 22/10/2020 a modifier ptdr
         }
     }

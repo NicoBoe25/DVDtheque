@@ -4,7 +4,6 @@ public class Location {
     public int getDuree() {
         return duree;
     }
-
     public String getDateRetourPrevue() {
         return dateRetourPrevue;
     }
@@ -19,4 +18,5 @@ public class Location {
         this.duree = duree;
         this.dateRetourPrevue = dateRetourPrevue;
     }
+
 }

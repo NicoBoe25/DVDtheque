@@ -15,6 +15,10 @@ public class Film {
         return date;
     }
 
+    public Categorie getCategorie(){
+        return categorie;
+    }
+
 
     //-------------------------Setters-----------------------------//
     public void setNom(String nom) {
