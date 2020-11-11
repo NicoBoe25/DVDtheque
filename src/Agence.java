@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -25,14 +26,14 @@ public class Agence {
         for (Location l: locations) {
             somme += l.getPrixLocation();
         }
-        return new Facture(new Date(),somme,locations,client,"Facture de "+locations.size()+" location(s) le "+new Date());
+        return new Facture(LocalDateTime.now(),somme,locations,client,"Facture de "+locations.size()+" location(s) le "+new Date());
     }
 
     public void rembourser(Client client, Location location) {
         if (!(client.getCompte()==null)){
             double prixInitial=location.getPrixLocation();
             long dureeInitiale = location.calcDureeLocation(location.getDateDebutLocation(),location.getDateRetourPrevue());
-            long dureeLoc = location.calcDureeLocation(location.getDateDebutLocation(),new Date());
+            long dureeLoc = location.calcDureeLocation(location.getDateDebutLocation(), LocalDateTime.now());
             client.getCompte().credite((prixInitial/(dureeInitiale/12))*((dureeInitiale-dureeLoc)%12));
         }
     }

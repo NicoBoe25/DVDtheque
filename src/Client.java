@@ -1,4 +1,5 @@
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -79,7 +80,7 @@ public class Client {
 
     public void rendLocation(Location location){
         location.getArticle().augmenteStock();
-        Date dateRetournee = new Date();
+        LocalDateTime dateRetournee = LocalDateTime.now();
         if (location.getDateRetourPrevue().compareTo(dateRetournee) < 0){
             Location locationPenalite = new Location(location.getArticle(), location.getDateRetourPrevue().toString());
             ArrayList<Location> arrayLocationPenalisée = new ArrayList<>();

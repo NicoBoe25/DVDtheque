@@ -1,9 +1,11 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class Film {
 
@@ -11,7 +13,7 @@ public class Film {
     public String getNom() {
         return nom;
     }
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
     public Categorie getCategorie(){
@@ -32,20 +34,21 @@ public class Film {
 
     //-------------------------Fields-----------------------------//
     private String nom;
-    private Date date;
+    private LocalDateTime date;
     private Categorie categorie;
     private ArrayList<Genre> genreArrayList;
 
     public Film(String nom, String date, ArrayList<Genre> listGenre) {
         this.nom = nom;
-        this.date=new Date(String.valueOf(date));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        this.date=LocalDateTime.parse(date, formatter);
         this.genreArrayList = listGenre;
         setCategorie();
     }
 
 
     private void setCategorie() {
-        Date dateNow = new Date();
+        LocalDateTime dateNow = LocalDateTime.now();
         if (getDate().compareTo(dateNow)==0){
             this.categorie= Categorie.NOUVEAUTE;
         }else if (getDate().getYear()==dateNow.getYear()){

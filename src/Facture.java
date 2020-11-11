@@ -1,8 +1,9 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Facture {
-    private Date date;
+    private LocalDateTime date;
     private double montant;
     private ArrayList<Location>locations;
     private Client client;
@@ -10,7 +11,7 @@ public class Facture {
     private boolean isPaye;
     private String nom;
 
-    public Facture(Date date, double montant, ArrayList<Location> locations, Client client, String nom) {
+    public Facture(LocalDateTime date, double montant, ArrayList<Location> locations, Client client, String nom) {
         this.date = date;
         this.montant = montant;
         this.locations = locations;
@@ -20,11 +21,11 @@ public class Facture {
         client.addFacture(this);
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
