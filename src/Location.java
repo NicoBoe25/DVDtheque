@@ -40,7 +40,7 @@ public class Location {
 
     public long calcDureeLocation(Date debut, Date dateRetour){
         long diffdates=dateRetour.getTime()-debut.getTime();
-        return TimeUnit.DAYS.convert(diffdates, TimeUnit.HOURS);
+        return (TimeUnit.DAYS.convert(diffdates, TimeUnit.HOURS))%12;
     }
 
 

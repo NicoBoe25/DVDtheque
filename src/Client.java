@@ -36,12 +36,12 @@ public class Client {
         compte=null;
     }
 
-    public Facture commande(ArrayList<Article> articleArrayList, ArrayList<Integer> dureeArrayListLocation){
+    public Facture commande(ArrayList<Article> articleArrayList, ArrayList<String> dateArrayListLocation){
         boolean locationIsOK = true;
         ArrayList<Location> locationsTemp = new ArrayList<Location>();
         for (int i = 0; i < articleArrayList.size(); i++) {
             if (articleArrayList.get(i).isAvailable()) {
-                Location loc = new Location(articleArrayList.get(i), "2021/01/01");
+                Location loc = new Location(articleArrayList.get(i), dateArrayListLocation.get(i));
                 locationsTemp.add(loc);
                 loc.getArticle().diminueStock();
             } else {
@@ -66,23 +66,27 @@ public class Client {
     public double payer(Facture facture, MoyenPaiement moyenPaiement){
         facture.setMoyenPaiement(moyenPaiement);
         if (moyenPaiement.equals(MoyenPaiement.COMPTE)){
-            System.out.println("Vous devez réapprovisionner votre compte");
-            return compte.debiter(facture.getMontant());
+            double solde =compte.debiter(facture.getMontant());
+            System.out.println("Votre compte a été débité");
+            if (solde<0){
+                System.out.println("Vous devez réapprovisionner votre compte");
+            }
+            return solde;
         }
-        System.out.println("Votre compte a été débité");
         return facture.getMontant();
     }
 
 
     public void rendLocation(Location location){
-        //TODO : fonction rendre location article
-//        location.getArticle().augmenteStock();
-//        Date dateRetournee = new Date();
-//        if (location.getDateRetourPrevue().compareTo(dateRetournee)==-1){
-//            long dureePenalite = location.calcDureeLocation(location.getDateRetourPrevue(),dateRetournee)%12;
-//            Location locationPenalite = new Location(location.getArticle(), location.getDateRetourPrevue());
-//            factureArrayList.add(new Facture(dateRetournee,));
-//        }
+        location.getArticle().augmenteStock();
+        Date dateRetournee = new Date();
+        if (location.getDateRetourPrevue().compareTo(dateRetournee) < 0){
+            Location locationPenalite = new Location(location.getArticle(), location.getDateRetourPrevue().toString());
+            ArrayList<Location> arrayLocationPenalisée = new ArrayList<>();
+            arrayLocationPenalisée.add(locationPenalite);
+            factureArrayList.add(new Facture(dateRetournee,locationPenalite.getPrixLocation(),arrayLocationPenalisée,this,"Penalite de retard"));
+        }
+        System.out.println("L'article"+location.getArticle().getFilm().getNom()+" a bien été rendu");
 
     }
 
