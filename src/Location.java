@@ -44,7 +44,8 @@ public class Location {
     }
 
     public long calcDureeLocation(LocalDateTime debut, LocalDateTime dateRetour){
-        return ChronoUnit.HOURS.between(dateRetour, debut);
+        return ChronoUnit.HOURS.between(debut, dateRetour);
+
     }
 
 
