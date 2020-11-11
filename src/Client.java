@@ -33,12 +33,12 @@ public class Client {
         compte=null;
     }
 
-    public Facture commande(ArrayList<Article> articleArrayList, ArrayList<Integer> dureeArrayListLocation){
+    public Facture commande(ArrayList<Article> articleArrayList, ArrayList<String> dateArrayListLocation){
         boolean locationIsOK = true;
         ArrayList<Location> locationsTemp = new ArrayList<Location>();
         for (int i = 0; i < articleArrayList.size(); i++) {
             if (articleArrayList.get(i).isAvailable()) {
-                Location loc = new Location(articleArrayList.get(i), "2021/01/01");
+                Location loc = new Location(articleArrayList.get(i), dateArrayListLocation.get(i));
                 locationsTemp.add(loc);
                 loc.getArticle().diminueStock();
             } else {
@@ -59,10 +59,13 @@ public class Client {
     public double payer(Facture facture, MoyenPaiement moyenPaiement){
         facture.setMoyenPaiement(moyenPaiement);
         if (moyenPaiement.equals(MoyenPaiement.COMPTE)){
-            System.out.println("Vous devez réapprovisionner votre compte");
-            return compte.debiter(facture.getMontant());
+            double solde =compte.debiter(facture.getMontant());
+            System.out.println("Votre compte a été débité");
+            if (solde<0){
+                System.out.println("Vous devez réapprovisionner votre compte");
+            }
+            return solde;
         }
-        System.out.println("Votre compte a été débité");
         return facture.getMontant();
     }
 
