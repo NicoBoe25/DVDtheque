@@ -1,6 +1,5 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Agence {
 
@@ -32,9 +31,12 @@ public class Agence {
     public void rembourser(Client client, Location location) {
         if (!(client.getCompte()==null)){
             double prixInitial=location.getPrixLocation();
-            long dureeInitiale = location.calcDureeLocation(location.getDateDebutLocation(),location.getDateRetourPrevue());
-            long dureeLoc = location.calcDureeLocation(location.getDateDebutLocation(), LocalDateTime.now());
-            client.getCompte().credite((prixInitial/(dureeInitiale/12))*((dureeInitiale-dureeLoc)%12));
+            long dureeInitiale = location.calcDureeHoursLocation(location.getDateDebutLocation(),location.getDateRetourPrevue());
+            long dureeLoc = location.calcDureeHoursLocation(location.getDateDebutLocation(), LocalDateTime.now());
+            if (dureeLoc==0) dureeLoc=1;
+            double remboursement = (prixInitial/(dureeInitiale))*((dureeInitiale-dureeLoc));
+            client.getCompte().credite(remboursement);
+            System.out.println("Vous avez été remboursé de "+remboursement);
         }
     }
 }

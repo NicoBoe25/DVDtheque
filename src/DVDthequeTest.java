@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -20,28 +21,52 @@ public class DVDthequeTest {
         articleCommande.add(agence1.getStock().getListarticles().get(1));
         articleCommande.add(agence1.getStock().getListarticles().get(4));
         ArrayList<String> dureeFilmCommande = new ArrayList<>();
-
         dureeFilmCommande.add("2020/11/12 12:00");
         dureeFilmCommande.add("2020/11/14 12:00");
+
+        ArrayList<Article> articleClient4ArrayList = new ArrayList<>();
+        articleClient4ArrayList.add(agence1.getStock().getListarticles().get(0));
+        articleClient4ArrayList.add(agence1.getStock().getListarticles().get(2));
+        articleClient4ArrayList.add(agence1.getStock().getListarticles().get(3));
+        articleClient4ArrayList.add(agence1.getStock().getListarticles().get(5));
+        articleClient4ArrayList.add(agence1.getStock().getListarticles().get(6));
+        ArrayList<String> dureeFilmClint4 = new ArrayList<>();
+        dureeFilmClint4.add("2020/11/12 12:00");
+        dureeFilmClint4.add("2020/11/13 12:00");
+        dureeFilmClint4.add("2020/11/12 12:00");
+        dureeFilmClint4.add("2020/11/14 12:00");
+        dureeFilmClint4.add("2020/11/14 12:00");
+
 
         System.out.println("------------------------Client 1--------------------------------");
         Facture facture1 = client1.commande(articleCommande, dureeFilmCommande);
         System.out.println("Le montant de votre facture s'élève à "+facture1.getMontant());
         client1.payer(facture1,MoyenPaiement.CB);
 
+        for (Location l:client1.getLocationArrayList()) {
+            client1.rendLocation(l);
+        }
+
         System.out.println("------------------------Client 2--------------------------------");
         Facture facture2 = client2.commande(articleCommande,dureeFilmCommande);
         System.out.println("Le montant de votre facture s'élève à "+facture2.getMontant());
-        client2.payer(facture2,MoyenPaiement.CB);
+        client2.payer(facture2,MoyenPaiement.ESPECE);
 
 
         System.out.println("------------------------Client 3--------------------------------");
         Facture facture3 = client3.commande(articleCommande,dureeFilmCommande);
         System.out.println("Le montant de votre facture s'élève à "+facture3.getMontant());
-        client3.payer(facture3,MoyenPaiement.CB);
+        client3.payer(facture3,MoyenPaiement.CHEQUE);
 
         System.out.println("------------------------Client 4--------------------------------");
+        Facture facture4 = client4.commande(articleClient4ArrayList,dureeFilmClint4);
+        System.out.println("Le montant de votre facture s'élève à "+facture4.getMontant());
+        client4.payer(facture4,MoyenPaiement.COMPTE);
 
+        for (Location l:client4.getLocationArrayList()) {
+            System.out.println("--------------Rend Article-----------------");
+            client4.rendLocation(l);
+        }
     }
 
     public void init() {
@@ -74,6 +99,10 @@ public class DVDthequeTest {
         genres.add(Genre.ACTION);
         genres.add(Genre.AVENTURE);
         filmArrayList.add(new Film("Le Mans 66","2019/08/30 12:00:00",genres));
+        genres.clear();
+        genres.add(Genre.COMEDIE);
+        genres.add(Genre.ACTION);
+        filmArrayList.add(new Film("30 Jours Max","2020/10/14 12:00:00",genres));
 
         ArrayList<Article>articlesArrayList=new ArrayList<Article>();
         articlesArrayList.add(new Article(filmArrayList.get(0), Support.DVD, 1));
@@ -81,12 +110,16 @@ public class DVDthequeTest {
         articlesArrayList.add(new Article(filmArrayList.get(2), Support.DVD, 3));
         articlesArrayList.add(new Article(filmArrayList.get(3), Support.DVD, 16));
         articlesArrayList.add(new Article(filmArrayList.get(4), Support.DVD, 1));
+        articlesArrayList.add(new Article(filmArrayList.get(5), Support.DVD, 10));
+        articlesArrayList.add(new Article(filmArrayList.get(6), Support.DVD, 2));
 
         articlesArrayList.add(new Article(filmArrayList.get(0), Support.BLU_RAY, 2));
         articlesArrayList.add(new Article(filmArrayList.get(1), Support.BLU_RAY, 0));
         articlesArrayList.add(new Article(filmArrayList.get(2), Support.BLU_RAY, 5));
         articlesArrayList.add(new Article(filmArrayList.get(3), Support.BLU_RAY, 17));
         articlesArrayList.add(new Article(filmArrayList.get(4), Support.BLU_RAY, 1));
+        articlesArrayList.add(new Article(filmArrayList.get(5), Support.BLU_RAY, 5));
+        articlesArrayList.add(new Article(filmArrayList.get(5), Support.BLU_RAY, 5));
 
 
         agence1 = new Agence(articlesArrayList);

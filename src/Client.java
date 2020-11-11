@@ -86,8 +86,10 @@ public class Client {
             ArrayList<Location> arrayLocationPenalisée = new ArrayList<>();
             arrayLocationPenalisée.add(locationPenalite);
             factureArrayList.add(new Facture(dateRetournee,locationPenalite.getPrixLocation(),arrayLocationPenalisée,this,"Penalite de retard"));
+        }else if ((compte!=null) && ( location.getDateRetourPrevue().compareTo(dateRetournee) > 0 )){
+            agence.rembourser(this,location);
         }
-        System.out.println("L'article"+location.getArticle().getFilm().getNom()+" a bien été rendu");
+        System.out.println("L'article "+location.getArticle().getFilm().getNom()+" a bien été rendu");
 
     }
 
