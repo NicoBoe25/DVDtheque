@@ -10,15 +10,6 @@ public class Facture {
     private boolean isPaye;
     private String nom;
 
-    public boolean isPaye() {
-        return isPaye;
-    }
-
-    public void setPaye(boolean paye) {
-        isPaye = paye;
-    }
-
-
     public Facture(Date date, double montant, ArrayList<Location> locations, Client client, String nom) {
         this.date = date;
         this.montant = montant;
@@ -67,5 +58,13 @@ public class Facture {
 
     public void setMoyenPaiement(MoyenPaiement moyenPaiement) {
         this.moyenPaiement = moyenPaiement;
+    }
+
+    public boolean isPaye() {
+        return isPaye;
+    }
+
+    public void setPaye(boolean paye) {
+        isPaye = paye;
     }
 }
