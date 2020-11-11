@@ -34,9 +34,4 @@ public class Agence {
             client.getCompte().credite((prixInitial/(dureeInitiale/12))*((dureeInitiale-dureeLoc)%12));
         }
     }
-
-    public void penaliser(Client client){
-        //TODO : fonction penalise
-
-    }
 }

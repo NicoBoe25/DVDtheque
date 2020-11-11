@@ -38,12 +38,35 @@ public class DVDthequeTest {
     }
 
     public void init() {
+        ArrayList<Genre> genres = new ArrayList<>();
+        genres.add(Genre.ACTION);
+        genres.add(Genre.SUPERHEROS);
         ArrayList<Film> filmArrayList = new ArrayList<>();
-        filmArrayList.add(new Film("Iron Man","2008/04/30 12:00:00"));
-        filmArrayList.add(new Film("Spider-Man New Generation","2019/04/30 12:00:00"));
-        filmArrayList.add(new Film("Fast and Furious","2001/05/30 12:00:00"));
-        filmArrayList.add(new Film("In the dark","2012/04/30 12:00:00"));
-        filmArrayList.add(new Film("Qu'est ce qu'on a fait au bon dieu?","2013/04/30 12:00:00"));
+        filmArrayList.add(new Film("Iron Man","2008/04/30 12:00:00",genres));
+        genres.clear();
+        genres.add(Genre.ACTION);
+        genres.add(Genre.SUPERHEROS);
+        genres.add(Genre.ANIMATION);
+        genres.add(Genre.SUPERHEROS);
+        filmArrayList.add(new Film("Spider-Man New Generation","2019/04/30 12:00:00",genres));
+        genres.clear();
+        genres.add(Genre.ACTION);
+        genres.add(Genre.THRILLER);
+        genres.add(Genre.AVENTURE);
+        filmArrayList.add(new Film("Fast and Furious","2001/05/30 12:00:00",genres));
+        genres.clear();
+        genres.add(Genre.HORREUR);
+        genres.add(Genre.THRILLER);
+        genres.add(Genre.SUSPENS);
+        filmArrayList.add(new Film("In the dark","2012/04/30 12:00:00",genres));
+        genres.clear();
+        genres.add(Genre.COMEDIE);
+        filmArrayList.add(new Film("Qu'est ce qu'on a fait au bon dieu?","2013/04/30 12:00:00",genres));
+        genres.clear();
+        genres.add(Genre.DRAME);
+        genres.add(Genre.ACTION);
+        genres.add(Genre.AVENTURE);
+        filmArrayList.add(new Film("Le Mans 66","2019/08/30 12:00:00",genres));
 
         ArrayList<Article>articlesArrayList=new ArrayList<Article>();
         articlesArrayList.add(new Article(filmArrayList.get(0), Support.DVD, 1));
