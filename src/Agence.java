@@ -26,7 +26,7 @@ public class Agence {
         for (Location l: locations) {
             somme += l.getPrixLocation();
         }
-        return new Facture(LocalDateTime.now(),somme,locations,client,"Facture de "+locations.size()+" location(s) le "+new Date());
+        return new Facture(LocalDateTime.now(), somme, locations, client, "Facture de " + locations.size() + " location(s) le " + LocalDateTime.now());
     }
 
     public void rembourser(Client client, Location location) {
