@@ -8,13 +8,24 @@ public class Facture {
     private Client client;
     private MoyenPaiement moyenPaiement;
     private boolean isPaye;
+    private String nom;
 
-    public Facture(Date date, double montant, ArrayList<Location> locations, Client client) {
+    public boolean isPaye() {
+        return isPaye;
+    }
+
+    public void setPaye(boolean paye) {
+        isPaye = paye;
+    }
+
+
+    public Facture(Date date, double montant, ArrayList<Location> locations, Client client, String nom) {
         this.date = date;
         this.montant = montant;
         this.locations = locations;
         this.client = client;
         this.isPaye = false;
+        this.nom=nom;
         client.addFacture(this);
     }
 

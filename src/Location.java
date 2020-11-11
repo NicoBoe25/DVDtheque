@@ -12,6 +12,10 @@ public class Location {
     public double getPrixLocation() {
         return prixLocation;
     }
+    public Date getDateDebutLocation() {
+        return dateDebutLocation;
+    }
+
 
     private Article article;
     private Date dateDebutLocation;
@@ -28,14 +32,14 @@ public class Location {
 
     private void setPrixLocation() {
         double prix = getArticle().getPrixCategorie()+getArticle().getPrixSupport() ;
-        for (int i = 0; i < calcDureeLocation(getDateRetourPrevue()); i++) {
+        for (int i = 0; i < calcDureeLocation(dateDebutLocation,dateRetourPrevue); i++) {
             prix = prix-(prix*0.1*i);
         }
         prixLocation=prix;
     }
 
-    public long calcDureeLocation(Date dateRetour){
-        long diffdates=dateDebutLocation.getTime()-dateRetour.getTime();
+    public long calcDureeLocation(Date debut, Date dateRetour){
+        long diffdates=dateRetour.getTime()-debut.getTime();
         return TimeUnit.DAYS.convert(diffdates, TimeUnit.HOURS);
     }
 

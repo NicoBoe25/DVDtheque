@@ -23,14 +23,14 @@ public class Agence {
         for (Location l: locations) {
             somme += l.getPrixLocation();
         }
-        return new Facture(new Date(),somme,locations,client);
+        return new Facture(new Date(),somme,locations,client,"Facture de "+locations.size()+" location(s) le "+new Date());
     }
 
     public void rembourser(Client client, Location location) {
         if (!(client.getCompte()==null)){
             double prixInitial=location.getPrixLocation();
-            long dureeInitiale = location.calcDureeLocation(location.getDateRetourPrevue());
-            long dureeLoc = location.calcDureeLocation(new Date());
+            long dureeInitiale = location.calcDureeLocation(location.getDateDebutLocation(),location.getDateRetourPrevue());
+            long dureeLoc = location.calcDureeLocation(location.getDateDebutLocation(),new Date());
             client.getCompte().credite((prixInitial/(dureeInitiale/12))*((dureeInitiale-dureeLoc)%12));
         }
     }
