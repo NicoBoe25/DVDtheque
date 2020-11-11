@@ -1,5 +1,5 @@
 public enum Support {
-    DVD(1),BLU_RAY(2.5);
+    Cassette(0.5),DVD(1.5),BLU_RAY(2.5);
 
     public double getTarifSupport() {
         return tarifSupport;

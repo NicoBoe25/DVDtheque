@@ -48,7 +48,7 @@ public class Client {
     public void penalise(){
         //TODO : fonction penalise
     }
-    public void renduLocation(){
+    public void renduLocation(Location location){
         //TODO : fonction rendre location article
 
     }
