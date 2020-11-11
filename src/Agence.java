@@ -35,6 +35,7 @@ public class Agence {
     }
 
     public void penaliser(Client client){
+        //TODO : fonction penalise
 
     }
 }

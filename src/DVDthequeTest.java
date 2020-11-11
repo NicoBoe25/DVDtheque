@@ -62,4 +62,6 @@ public class DVDthequeTest {
         client2 = new Client();
         client3 = new Client();
     }
+    //TODO : test
+
 }

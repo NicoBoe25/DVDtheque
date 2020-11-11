@@ -1,3 +1,5 @@
+import com.sun.xml.internal.bind.v2.TODO;
+
 import java.util.ArrayList;
 
 public class Client {
@@ -43,8 +45,13 @@ public class Client {
         System.out.println("Votre compte a été débité");
         return facture.getMontant();
     }
-    public void penalise(){}
-    public void renduLocation(){}
+    public void penalise(){
+        //TODO : fonction penalise
+    }
+    public void renduLocation(){
+        //TODO : fonction rendre location article
+
+    }
 
     public void creerCompte(){
         compte=new Compte();
