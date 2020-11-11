@@ -1,17 +1,17 @@
 public enum Support {
     Cassette(0.5),DVD(1.5),BLU_RAY(2.5);
 
-    public double getTarifSupport() {
-        return tarifSupport;
+    public double getTarif() {
+        return tarif;
     }
 
-    public void setTarifSupport(double tarifSupport) {
-        this.tarifSupport = tarifSupport;
+    public void setTarif(double tarif) {
+        this.tarif = tarif;
     }
 
-    private double tarifSupport;
+    private double tarif;
 
     Support(double v) {
-        this.tarifSupport = v;
+        this.tarif = v;
     }
 }

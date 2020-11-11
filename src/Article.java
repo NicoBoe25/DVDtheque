@@ -3,7 +3,7 @@ public class Article {
     private Film film;
 
     private Support support;
-    private int nbExemplaire;
+    private int nbExemplaires;
     private boolean isAvailable;
 
     public Film getFilm() {
@@ -12,40 +12,40 @@ public class Article {
     public Support getSupport() {
         return support;
     }
-    public int getNbExemplaire() {
-        return nbExemplaire;
+    public int getNbExemplaires() {
+        return nbExemplaires;
     }
     public boolean isAvailable() {
         return isAvailable;
     }
 
-    public Article(Film film, Support support, int nbExemplaire) {
+    public Article(Film film, Support support, int nbExemplaires) {
         this.film = film;
         this.support = support;
-        this.nbExemplaire=nbExemplaire;
+        this.nbExemplaires = nbExemplaires;
         setDisponibilite();
     }
 
 
     private void setDisponibilite() {
-        if (getNbExemplaire()>0) isAvailable=true;
+        if (getNbExemplaires()>0) isAvailable=true;
         else isAvailable=false;
     }
 
     public void diminueStock(){
-        this.nbExemplaire -= 1;
+        this.nbExemplaires -= 1;
         setDisponibilite();
     }
 
     public void augmenteStock(){
-        this.nbExemplaire += 1;
+        this.nbExemplaires += 1;
         setDisponibilite();
     }
     public double getPrixCategorie(){
-        return getFilm().getCategorie().getTarifCat();
+        return getFilm().getCategorie().getTarif();
     }
     public double getPrixSupport(){
-        return getSupport().getTarifSupport();
+        return getSupport().getTarif();
     }
 
 }

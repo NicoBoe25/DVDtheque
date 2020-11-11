@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Film {
 
     //-------------------------Getters-----------------------------//
-    public String getNom() {
-        return nom;
+    public String getTitre() {
+        return titre;
     }
     public LocalDateTime getDate() {
         return date;
@@ -14,30 +14,30 @@ public class Film {
     public Categorie getCategorie(){
         return categorie;
     }
-    public ArrayList<Genre> getGenreArrayList() {
-        return genreArrayList;
+    public ArrayList<Genre> getGenres() {
+        return genres;
     }
 
     //-------------------------Setters-----------------------------//
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setTitre(String titre) {
+        this.titre = titre;
     }
-    public void setGenreArrayList(ArrayList<Genre> genreArrayList) {
-        this.genreArrayList = genreArrayList;
+    public void setGenres(ArrayList<Genre> genres) {
+        this.genres = genres;
     }
 
 
     //-------------------------Fields-----------------------------//
-    private String nom;
+    private String titre;
     private LocalDateTime date;
     private Categorie categorie;
-    private ArrayList<Genre> genreArrayList;
+    private ArrayList<Genre> genres;
 
-    public Film(String nom, String date, ArrayList<Genre> listGenre) {
-        this.nom = nom;
+    public Film(String titre, String date, ArrayList<Genre> listGenre) {
+        this.titre = titre;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         this.date=LocalDateTime.parse(date, formatter);
-        this.genreArrayList = listGenre;
+        this.genres = listGenre;
         setCategorie();
     }
 

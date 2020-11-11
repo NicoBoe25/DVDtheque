@@ -7,7 +7,7 @@ public class Facture {
     private ArrayList<Location>locations;
     private Client client;
     private MoyenPaiement moyenPaiement;
-    private boolean isPaye;
+    private boolean paye;
     private String nom;
 
     public Facture(LocalDateTime date, double montant, ArrayList<Location> locations, Client client, String nom) {
@@ -15,7 +15,7 @@ public class Facture {
         this.montant = montant;
         this.locations = locations;
         this.client = client;
-        this.isPaye = false;
+        this.paye = false;
         this.nom=nom;
         client.addFacture(this);
     }
@@ -61,10 +61,18 @@ public class Facture {
     }
 
     public boolean isPaye() {
-        return isPaye;
+        return paye;
     }
 
     public void setPaye(boolean paye) {
-        isPaye = paye;
+        this.paye = paye;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 }

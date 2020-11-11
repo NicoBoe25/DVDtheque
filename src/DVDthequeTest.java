@@ -16,18 +16,18 @@ public class DVDthequeTest {
     private void run() {
         init();
         ArrayList<Article> articleCommande = new ArrayList<>();
-        articleCommande.add(agence1.getStock().getListarticles().get(1));
-        articleCommande.add(agence1.getStock().getListarticles().get(4));
+        articleCommande.add(agence1.getStock().getArticles().get(1));
+        articleCommande.add(agence1.getStock().getArticles().get(4));
         ArrayList<String> dureeFilmCommande = new ArrayList<>();
         dureeFilmCommande.add("2020/11/12 12:00");
         dureeFilmCommande.add("2020/11/14 12:00");
 
         ArrayList<Article> articleClient4ArrayList = new ArrayList<>();
-        articleClient4ArrayList.add(agence1.getStock().getListarticles().get(0));
-        articleClient4ArrayList.add(agence1.getStock().getListarticles().get(2));
-        articleClient4ArrayList.add(agence1.getStock().getListarticles().get(3));
-        articleClient4ArrayList.add(agence1.getStock().getListarticles().get(5));
-        articleClient4ArrayList.add(agence1.getStock().getListarticles().get(6));
+        articleClient4ArrayList.add(agence1.getStock().getArticles().get(0));
+        articleClient4ArrayList.add(agence1.getStock().getArticles().get(2));
+        articleClient4ArrayList.add(agence1.getStock().getArticles().get(3));
+        articleClient4ArrayList.add(agence1.getStock().getArticles().get(5));
+        articleClient4ArrayList.add(agence1.getStock().getArticles().get(6));
         ArrayList<String> dureeFilmClint4 = new ArrayList<>();
         dureeFilmClint4.add("2020/11/12 12:00");
         dureeFilmClint4.add("2020/11/13 12:00");
@@ -37,33 +37,33 @@ public class DVDthequeTest {
 
 
         System.out.println("------------------------Client 1--------------------------------");
-        Facture facture1 = client1.commande(articleCommande, dureeFilmCommande);
+        Facture facture1 = client1.commander(articleCommande, dureeFilmCommande);
         System.out.println("Le montant de votre facture s'élève à "+facture1.getMontant());
         client1.payer(facture1,MoyenPaiement.CB);
 
-        for (Location l:client1.getLocationArrayList()) {
-            client1.rendLocation(l);
+        for (Location l:client1.getLocations()) {
+            client1.rendreLocation(l);
         }
 
         System.out.println("------------------------Client 2--------------------------------");
-        Facture facture2 = client2.commande(articleCommande,dureeFilmCommande);
+        Facture facture2 = client2.commander(articleCommande,dureeFilmCommande);
         System.out.println("Le montant de votre facture s'élève à "+facture2.getMontant());
         client2.payer(facture2,MoyenPaiement.ESPECE);
 
 
         System.out.println("------------------------Client 3--------------------------------");
-        Facture facture3 = client3.commande(articleCommande,dureeFilmCommande);
+        Facture facture3 = client3.commander(articleCommande,dureeFilmCommande);
         System.out.println("Le montant de votre facture s'élève à "+facture3.getMontant());
         client3.payer(facture3,MoyenPaiement.CHEQUE);
 
         System.out.println("------------------------Client 4--------------------------------");
-        Facture facture4 = client4.commande(articleClient4ArrayList,dureeFilmClint4);
+        Facture facture4 = client4.commander(articleClient4ArrayList,dureeFilmClint4);
         System.out.println("Le montant de votre facture s'élève à "+facture4.getMontant());
         client4.payer(facture4,MoyenPaiement.COMPTE);
 
-        for (Location l:client4.getLocationArrayList()) {
+        for (Location l:client4.getLocations()) {
             System.out.println("--------------Rend Article-----------------");
-            client4.rendLocation(l);
+            client4.rendreLocation(l);
         }
 
 
@@ -71,13 +71,13 @@ public class DVDthequeTest {
         System.out.println("----------------Test de solde negatif du compte");
         client4.getCompte().debiter(90);
         System.out.println("------------------------Client 4--------------------------------");
-        Facture facture5 = client4.commande(articleClient4ArrayList,dureeFilmClint4);
+        Facture facture5 = client4.commander(articleClient4ArrayList,dureeFilmClint4);
         System.out.println("Le montant de votre facture s'élève à "+facture5.getMontant());
         client4.payer(facture5,MoyenPaiement.COMPTE);
 
         System.out.println("------------------------Client 5 Réservation--------------------------");
-        client5.reserver(agence1.getStock().getListarticles().get(3),"2020/11/14 12:00");
-        System.out.println(client5.getReservations().get(0).getArticle().getFilm().getNom());
+        client5.reserver(agence1.getStock().getArticles().get(3),"2020/11/14 12:00");
+        System.out.println(client5.getReservations().get(0).getArticle().getFilm().getTitre());
 
 
 

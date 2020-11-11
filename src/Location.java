@@ -6,37 +6,37 @@ import java.time.temporal.ChronoUnit;
 public class Location {
     public Article getArticle() {return article;}
 
-    public LocalDateTime getDateRetourPrevue() {
-        return dateRetourPrevue;
+    public LocalDateTime getDateRetour() {
+        return dateRetour;
     }
-    public double getPrixLocation() {
-        return prixLocation;
+    public double getPrix() {
+        return prix;
     }
-    public LocalDateTime getDateDebutLocation() {
-        return dateDebutLocation;
+    public LocalDateTime getDateDebut() {
+        return dateDebut;
     }
 
     private Article article;
-    private LocalDateTime dateDebutLocation;
-    private LocalDateTime dateRetourPrevue;
-    private double prixLocation;
+    private LocalDateTime dateDebut;
+    private LocalDateTime dateRetour;
+    private double prix;
 
 
-    public Location(Article article, String dateRetourPrevue) {
+    public Location(Article article, String dateRetour) {
         this.article = article;
-        this.dateDebutLocation = LocalDateTime.now();
+        this.dateDebut = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
-        this.dateRetourPrevue = LocalDateTime.parse(dateRetourPrevue, formatter);
-        setPrixLocation();
+        this.dateRetour = LocalDateTime.parse(dateRetour, formatter);
+        setPrix();
     }
 
-    private void setPrixLocation() {
+    public void setPrix() {
         double prix = getArticle().getPrixCategorie()+getArticle().getPrixSupport();
         double somme =0.0;
-        for (int i = 0; i < Math.abs(calcDureeDaysLocation(dateDebutLocation,dateRetourPrevue)); i++) {
+        for (int i = 0; i < Math.abs(calcDureeDaysLocation(dateDebut, dateRetour)); i++) {
             somme += prix-(prix*0.1*(i));
         }
-        prixLocation=somme;
+        this.prix =somme;
     }
 
     public long calcDureeDaysLocation(LocalDateTime debut, LocalDateTime dateRetour){
