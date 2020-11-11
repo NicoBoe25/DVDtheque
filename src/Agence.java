@@ -8,8 +8,10 @@ public class Agence {
     }
 
     private Stock stock;
+    private ArrayList<Client>clients;
 
-    public Agence(Stock stock) {
+    public Agence(ArrayList<Client> clients, Stock stock) {
+        this.clients=clients;
         this.stock = stock;
     }
 

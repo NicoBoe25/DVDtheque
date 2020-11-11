@@ -1,7 +1,10 @@
+
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Client {
+
+    private ArrayList<Reservation> reservations;
 
     public ArrayList<Facture> getFactureArrayList() {
         return factureArrayList;
@@ -53,6 +56,10 @@ public class Client {
         locationArrayList = locationsTemp;
 
         return getAgence().facture(this,locationArrayList);
+    }
+
+    public void reserver(Article article, String date){
+        reservations.add(new Reservation(new Date(String.valueOf(date)), article));
     }
 
 
