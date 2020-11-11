@@ -1,10 +1,12 @@
+import java.sql.Time;
+import java.time.Duration;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 public class Location {
     public Article getArticle() {return article;}
 
-    public int getDuree() {
-        return duree;
-    }
-    public String getDateRetourPrevue() {
+    public Date getDateRetourPrevue() {
         return dateRetourPrevue;
     }
     public double getPrixLocation() {
@@ -12,24 +14,29 @@ public class Location {
     }
 
     private Article article;
-    private int duree;
-    private String dateRetourPrevue;
+    private Date dateDebutLocation;
+    private Date dateRetourPrevue;
     private double prixLocation;
 
 
-    public Location(Article article, int duree, String dateRetourPrevue) {
+    public Location(Article article, String dateRetourPrevue) {
         this.article = article;
-        this.duree = duree;
-        this.dateRetourPrevue = dateRetourPrevue;
-        setPrixLocation(duree);
+        this.dateDebutLocation = new Date();
+        this.dateRetourPrevue = new Date(String.valueOf(dateRetourPrevue));
+        setPrixLocation();
     }
 
-    private void setPrixLocation(int duree) {
+    private void setPrixLocation() {
         double prix = getArticle().getPrixCategorie()+getArticle().getPrixSupport() ;
-        for (int i = 0; i < getDuree(); i++) {
+        for (int i = 0; i < calcDureeLocation(); i++) {
             prix = prix-(prix*0.1*i);
         }
         prixLocation=prix;
+    }
+
+    private long calcDureeLocation(){
+        long diffdates=dateDebutLocation.getTime()-dateRetourPrevue.getTime();
+        return TimeUnit.DAYS.convert(diffdates, TimeUnit.HOURS);
     }
 
 

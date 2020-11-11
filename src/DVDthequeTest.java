@@ -37,11 +37,11 @@ public class DVDthequeTest {
 
     public void init() {
         ArrayList<Film> filmArrayList = new ArrayList<>();
-        filmArrayList.add(new Film("Iron Man","30-04-2008"));
-        filmArrayList.add(new Film("Spider-Man New Generation","30-04-2019"));
-        filmArrayList.add(new Film("Fast and Furious","30-05-2001"));
-        filmArrayList.add(new Film("In the dark","30-04-2012"));
-        filmArrayList.add(new Film("Qu'est ce qu'on a fait au bon dieu?","30-04-2013"));
+        filmArrayList.add(new Film("Iron Man","30-04-2008 12:00:00"));
+        filmArrayList.add(new Film("Spider-Man New Generation","30-04-2019 12:00:00"));
+        filmArrayList.add(new Film("Fast and Furious","30-05-2001 12:00:00"));
+        filmArrayList.add(new Film("In the dark","30-04-2012 12:00:00"));
+        filmArrayList.add(new Film("Qu'est ce qu'on a fait au bon dieu?","30-04-2013 12:00:00"));
 
         ArrayList<Article>articlesArrayList=new ArrayList<Article>();
         articlesArrayList.add(new Article(filmArrayList.get(0), Support.DVD, 1));

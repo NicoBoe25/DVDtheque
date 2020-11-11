@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Client {
 
@@ -20,7 +19,7 @@ public class Client {
         ArrayList<Location> locationsTemp = new ArrayList<Location>();
         for (int i = 0; i < articleArrayList.size(); i++) {
             if (articleArrayList.get(i).isAvailable()) {
-                Location loc = new Location(articleArrayList.get(i), dureeArrayListLocation.get(i), "01-01-2021");
+                Location loc = new Location(articleArrayList.get(i), "01-01-2021");
                 locationsTemp.add(loc);
                 loc.getArticle().diminueStock();
             } else {
@@ -49,5 +48,8 @@ public class Client {
 
     public void creerCompte(){
         compte=new Compte();
+    }
+    public Compte getCompte(){
+        return compte;
     }
 }
