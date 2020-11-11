@@ -1,11 +1,11 @@
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Client {
 
-    private ArrayList<Reservation> reservations;
 
     public ArrayList<Facture> getFactureArrayList() {
         return factureArrayList;
@@ -19,20 +19,27 @@ public class Client {
 
     private final ArrayList<Facture> factureArrayList;
     private ArrayList<Location> locationArrayList;
+    public ArrayList<Reservation> getReservations() {
+        return reservations;
+    }
+
+    private ArrayList<Reservation> reservations;
     private Compte compte;
     private String nom;
     private String prenom;
-    private Date dateDeNaissance;
+    private LocalDateTime dateDeNaissance;
 
 
     private Agence agence;
 
-    public Client(String name, String firstName, Date birthday, Agence agence) {
+    public Client(String name, String firstName, String birthday, Agence agence) {
         this.nom=name;
         this.prenom=firstName;
-        this.dateDeNaissance=birthday;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        this.dateDeNaissance = LocalDateTime.parse(birthday, formatter);
         this.locationArrayList = new ArrayList<>();
         this.factureArrayList = new ArrayList<>();
+        this.reservations = new ArrayList<>();
         this.agence=agence;
         compte=null;
     }
@@ -60,7 +67,7 @@ public class Client {
     }
 
     public void reserver(Article article, String date){
-        reservations.add(new Reservation(new Date(String.valueOf(date)), article));
+        reservations.add(new Reservation(date, article));
     }
 
 
@@ -68,9 +75,10 @@ public class Client {
         facture.setMoyenPaiement(moyenPaiement);
         if (moyenPaiement.equals(MoyenPaiement.COMPTE)){
             double solde =compte.debiter(facture.getMontant());
-            System.out.println("Votre compte a été débité");
             if (solde<0){
                 System.out.println("Vous devez réapprovisionner votre compte");
+            }else {
+                System.out.println("Votre compte a été débité");
             }
             return solde;
         }

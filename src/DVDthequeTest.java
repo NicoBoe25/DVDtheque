@@ -10,6 +10,7 @@ public class DVDthequeTest {
     private Client client2;
     private Client client3;
     private Client client4;
+    private Client client5;
 
     public static void main(String[] args) {
         new DVDthequeTest().run();
@@ -67,6 +68,23 @@ public class DVDthequeTest {
             System.out.println("--------------Rend Article-----------------");
             client4.rendLocation(l);
         }
+
+
+        System.out.println("");
+        System.out.println("----------------Test de solde negatif du compte");
+        client4.getCompte().debiter(90);
+        System.out.println("------------------------Client 4--------------------------------");
+        Facture facture5 = client4.commande(articleClient4ArrayList,dureeFilmClint4);
+        System.out.println("Le montant de votre facture s'élève à "+facture5.getMontant());
+        client4.payer(facture5,MoyenPaiement.COMPTE);
+
+        System.out.println("------------------------Client 5 Réservation--------------------------");
+        client5.reserver(agence1.getStock().getListarticles().get(3),"2020/11/14 12:00");
+        System.out.println(client5.getReservations().get(0).getArticle().getFilm().getNom());
+
+
+
+
     }
 
     public void init() {
@@ -123,11 +141,14 @@ public class DVDthequeTest {
 
 
         agence1 = new Agence(articlesArrayList);
-        client1 = new Client("Peter", "Parker",new Date("2000/11/11"),agence1);
-        client2 = new Client("Miles","Morales",new Date("2004/01/01"),agence1);
-        client3 = new Client("Harry", "Osborn",new Date("1985/09/06"),agence1);
-        client4 = new Client("Gwen", "Stacy",new Date("2000/09/06"),agence1);
+
+        client1 = new Client("Peter", "Parker","2000/11/11 12:00:00",agence1);
+        client2 = new Client("Miles","Morales","2004/01/01 12:00:00",agence1);
+        client3 = new Client("Harry", "Osborn","1985/09/06 12:00:00",agence1);
+        client4 = new Client("Gwen", "Stacy","2000/09/06 12:00:00",agence1);
         client4.creerCompte();
         client4.getCompte().credite(100);
+        client5 = new Client("Curtis", "Connors","1978/04/25 12:00:00",agence1);
+
     }
 }
