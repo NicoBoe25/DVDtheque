@@ -40,8 +40,7 @@ public class Film {
 
 
     private void setCategorie() {
-        LocalDate date = LocalDate.now(); // Gets the current date
-        Date dateNow = new Date(String.valueOf(date));
+        Date dateNow = new Date();
         if (getDate().compareTo(dateNow)==0){
             this.categorie= Categorie.NOUVEAUTE;
         }else if (getDate().getYear()==dateNow.getYear()){

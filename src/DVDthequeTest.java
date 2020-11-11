@@ -35,19 +35,15 @@ public class DVDthequeTest {
 
         System.out.println(Support.DVD.getTarifSupport());
 
-        System.out.println(System.currentTimeMillis());
-        LocalDate ffff = LocalDate.now() ;
-        System.out.println(ffff);
-
     }
 
     public void init() {
         ArrayList<Film> filmArrayList = new ArrayList<>();
-        filmArrayList.add(new Film("Iron Man","2008-04-30 12:00:00"));
-        filmArrayList.add(new Film("Spider-Man New Generation","2019-04-30 12:00:00"));
-        filmArrayList.add(new Film("Fast and Furious","2001-05-30 12:00:00"));
-        filmArrayList.add(new Film("In the dark","2012-04-30 12:00:00"));
-        filmArrayList.add(new Film("Qu'est ce qu'on a fait au bon dieu?","2013-04-30 12:00:00"));
+        filmArrayList.add(new Film("Iron Man","2008/04/30 12:00:00"));
+        filmArrayList.add(new Film("Spider-Man New Generation","2019/04/30 12:00:00"));
+        filmArrayList.add(new Film("Fast and Furious","2001/05/30 12:00:00"));
+        filmArrayList.add(new Film("In the dark","2012/04/30 12:00:00"));
+        filmArrayList.add(new Film("Qu'est ce qu'on a fait au bon dieu?","2013/04/30 12:00:00"));
 
         ArrayList<Article>articlesArrayList=new ArrayList<Article>();
         articlesArrayList.add(new Article(filmArrayList.get(0), Support.DVD, 1));
@@ -64,10 +60,10 @@ public class DVDthequeTest {
 
 
         agence1 = new Agence(articlesArrayList);
-        client1 = new Client("Peter", "Parker",new Date("2000-11-11"),agence1);
-        client2 = new Client("Miles","Morales",new Date("2004-01-01"),agence1);
-        client3 = new Client("Harry", "Osborn",new Date("1985-09-06"),agence1);
-        client4 = new Client("Gwen", "Stacy",new Date("1985-09-06"),agence1);
+        client1 = new Client("Peter", "Parker",new Date("2000/11/11"),agence1);
+        client2 = new Client("Miles","Morales",new Date("2004/01/01"),agence1);
+        client3 = new Client("Harry", "Osborn",new Date("1985/09/06"),agence1);
+        client4 = new Client("Gwen", "Stacy",new Date("2000/09/06"),agence1);
     }
     //TODO : test
 

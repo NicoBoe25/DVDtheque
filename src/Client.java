@@ -38,7 +38,7 @@ public class Client {
         ArrayList<Location> locationsTemp = new ArrayList<Location>();
         for (int i = 0; i < articleArrayList.size(); i++) {
             if (articleArrayList.get(i).isAvailable()) {
-                Location loc = new Location(articleArrayList.get(i), "01-01-2021");
+                Location loc = new Location(articleArrayList.get(i), "2021/01/01");
                 locationsTemp.add(loc);
                 loc.getArticle().diminueStock();
             } else {

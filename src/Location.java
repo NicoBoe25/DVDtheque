@@ -26,7 +26,7 @@ public class Location {
     public Location(Article article, String dateRetourPrevue) {
         this.article = article;
         this.dateDebutLocation = new Date();
-        this.dateRetourPrevue = new Date(String.valueOf(dateRetourPrevue));
+        this.dateRetourPrevue = new Date(dateRetourPrevue);
         setPrixLocation();
     }
 
