@@ -28,14 +28,14 @@ public class Location {
 
     private void setPrixLocation() {
         double prix = getArticle().getPrixCategorie()+getArticle().getPrixSupport() ;
-        for (int i = 0; i < calcDureeLocation(); i++) {
+        for (int i = 0; i < calcDureeLocation(getDateRetourPrevue()); i++) {
             prix = prix-(prix*0.1*i);
         }
         prixLocation=prix;
     }
 
-    private long calcDureeLocation(){
-        long diffdates=dateDebutLocation.getTime()-dateRetourPrevue.getTime();
+    public long calcDureeLocation(Date dateRetour){
+        long diffdates=dateDebutLocation.getTime()-dateRetour.getTime();
         return TimeUnit.DAYS.convert(diffdates, TimeUnit.HOURS);
     }
 

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Agence {
 
@@ -17,14 +18,20 @@ public class Agence {
     }
 
 
-    public void facture(ArrayList<Location> locations){
+    public void facture(Client client, ArrayList<Location> locations){
         double somme = 0;
         for (Location l: locations) {
             somme += l.getPrixLocation();
         }
     }
 
-    public void rembourser(){
+    public void rembourser(Client client, Location location) {
+        if (!(client.getCompte()==null)){
+            double prixInitial=location.getPrixLocation();
+            long dureeInitiale = location.calcDureeLocation(location.getDateRetourPrevue());
+            long dureeLoc = location.calcDureeLocation(new Date());
+            client.getCompte().credite((prixInitial/(dureeInitiale/12))*((dureeInitiale-dureeLoc)%12));
+        }
     }
 
     public void penaliser(Client client){
