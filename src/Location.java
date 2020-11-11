@@ -32,7 +32,7 @@ public class Location {
 
     private void setPrixLocation() {
         double prix = getArticle().getPrixCategorie()+getArticle().getPrixSupport() ;
-        for (int i = 0; i < calcDureeLocation(dateDebutLocation,dateRetourPrevue); i++) {
+        for (int i = 0; i < Math.abs(calcDureeLocation(dateDebutLocation,dateRetourPrevue)); i++) {
             prix = prix-(prix*0.1*i);
         }
         prixLocation=prix;

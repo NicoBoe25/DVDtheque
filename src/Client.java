@@ -69,11 +69,13 @@ public class Client {
 
     public void rendLocation(Location location){
         //TODO : fonction rendre location article
-        location.getArticle().augmenteStock();
-        Date dateRetournee = new Date();
-        if (location.getDateRetourPrevue().compareTo(dateRetournee)==-1){
-            long dureePenalite = location.calcDureeLocation(location.getDateRetourPrevue(),dateRetournee)%12;
-        }
+//        location.getArticle().augmenteStock();
+//        Date dateRetournee = new Date();
+//        if (location.getDateRetourPrevue().compareTo(dateRetournee)==-1){
+//            long dureePenalite = location.calcDureeLocation(location.getDateRetourPrevue(),dateRetournee)%12;
+//            Location locationPenalite = new Location(location.getArticle(), location.getDateRetourPrevue());
+//            factureArrayList.add(new Facture(dateRetournee,));
+//        }
 
     }
 
