@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DVDthequeTest {
 
@@ -7,6 +8,7 @@ public class DVDthequeTest {
     private Client client1;
     private Client client2;
     private Client client3;
+    private Client client4;
 
     public static void main(String[] args) {
         new DVDthequeTest().run();
@@ -18,14 +20,18 @@ public class DVDthequeTest {
         articleCommande.add(agence1.getStock().getListarticles().get(1));
         articleCommande.add(agence1.getStock().getListarticles().get(4));
         ArrayList<Integer> dureeFilmCommande = new ArrayList<>();
+
         dureeFilmCommande.add(1);
         dureeFilmCommande.add(3);
+
         System.out.println("------------------------Client 1--------------------------------");
-        client1.commande(articleCommande, dureeFilmCommande);
+        Facture facture1 = client1.commande(articleCommande, dureeFilmCommande);
+
         System.out.println("------------------------Client 2--------------------------------");
-        client2.commande(articleCommande,dureeFilmCommande);
+        Facture facture2 = client2.commande(articleCommande,dureeFilmCommande);
+
         System.out.println("------------------------Client 3--------------------------------");
-        client3.commande(articleCommande,dureeFilmCommande);
+        Facture facture3 = client3.commande(articleCommande,dureeFilmCommande);
 
         System.out.println(Support.DVD.getTarifSupport());
 
@@ -37,11 +43,11 @@ public class DVDthequeTest {
 
     public void init() {
         ArrayList<Film> filmArrayList = new ArrayList<>();
-        filmArrayList.add(new Film("Iron Man","30-04-2008 12:00:00"));
-        filmArrayList.add(new Film("Spider-Man New Generation","30-04-2019 12:00:00"));
-        filmArrayList.add(new Film("Fast and Furious","30-05-2001 12:00:00"));
-        filmArrayList.add(new Film("In the dark","30-04-2012 12:00:00"));
-        filmArrayList.add(new Film("Qu'est ce qu'on a fait au bon dieu?","30-04-2013 12:00:00"));
+        filmArrayList.add(new Film("Iron Man","2008-04-30 12:00:00"));
+        filmArrayList.add(new Film("Spider-Man New Generation","2019-04-30 12:00:00"));
+        filmArrayList.add(new Film("Fast and Furious","2001-05-30 12:00:00"));
+        filmArrayList.add(new Film("In the dark","2012-04-30 12:00:00"));
+        filmArrayList.add(new Film("Qu'est ce qu'on a fait au bon dieu?","2013-04-30 12:00:00"));
 
         ArrayList<Article>articlesArrayList=new ArrayList<Article>();
         articlesArrayList.add(new Article(filmArrayList.get(0), Support.DVD, 1));
@@ -58,9 +64,10 @@ public class DVDthequeTest {
 
 
         agence1 = new Agence(articlesArrayList);
-        client1 = new Client();
-        client2 = new Client();
-        client3 = new Client();
+        client1 = new Client("Peter", "Parker",new Date("2000-11-11"),agence1);
+        client2 = new Client("Miles","Morales",new Date("2004-01-01"),agence1);
+        client3 = new Client("Harry", "Osborn",new Date("1985-09-06"),agence1);
+        client4 = new Client("Gwen", "Stacy",new Date("1985-09-06"),agence1);
     }
     //TODO : test
 

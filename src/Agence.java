@@ -18,11 +18,12 @@ public class Agence {
     }
 
 
-    public void facture(Client client, ArrayList<Location> locations){
+    public Facture facture(Client client, ArrayList<Location> locations){
         double somme = 0;
         for (Location l: locations) {
             somme += l.getPrixLocation();
         }
+        return new Facture(new Date(),somme,locations,client);
     }
 
     public void rembourser(Client client, Location location) {

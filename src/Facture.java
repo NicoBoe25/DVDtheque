@@ -7,13 +7,15 @@ public class Facture {
     private ArrayList<Location>locations;
     private Client client;
     private MoyenPaiement moyenPaiement;
+    private boolean isPaye;
 
-    public Facture(Date date, double montant, ArrayList<Location> locations, Client client, MoyenPaiement moyenPaiement) {
+    public Facture(Date date, double montant, ArrayList<Location> locations, Client client) {
         this.date = date;
         this.montant = montant;
         this.locations = locations;
         this.client = client;
-        this.moyenPaiement = moyenPaiement;
+        this.isPaye = false;
+        client.addFacture(this);
     }
 
     public Date getDate() {
